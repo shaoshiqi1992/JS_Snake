@@ -1,0 +1,15 @@
+body{
+    background: skyblue;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 3px grey;
+    font-family: "Times New Roman",Georgia,Serif;
+}
+table{
+    width: 800px;
+}
+canvas{
+    background: white;
+
+    box-shadow: 6px 6px 8px grey;
+}
