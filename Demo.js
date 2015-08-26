@@ -5,7 +5,6 @@ if(confirm("Ready?")==1)
     alert("Bye!");
 }
 
-
 function gameScene()
 {
     var x=-25,y=0,size=20;
@@ -16,7 +15,7 @@ function gameScene()
     var t =1;
     var canvas = document.getElementById("playground");
     var ctx = canvas.getContext("2d");
-    var direction = 2;
+    var direction = 4;
     var time = 200;
     var pos1 = pos2 =0;
 
@@ -24,10 +23,25 @@ function gameScene()
     function snakeMove()
     {
         switch(direction){
-            case 0:x -=move;break;
+            case 2:x -=move;break;
             case 1:y -=move;break;
-            case 2:x +=move;break;
+            case 4:x +=move;break;
             case 3:y +=move;break;
+        }
+
+        if(x<0 || x> 775 || y >425 || y<0)
+        {
+            alert("U R Dead!");
+            window.location.reload();
+        }
+        for(i=0;i<map.length;i++)
+        {
+            if( parseInt(map[i].x)==x && parseInt(map[i].y) == y)
+            {
+                alert("U R Dead!");
+                window.location.reload();
+            }
+
         }
         if (map.length>t) {
             var cl = map.shift();
@@ -62,12 +76,17 @@ function gameScene()
 
     document.onkeydown = function(e)
     {
-        switch (e.keyCode-37)
+        key = e.keyCode-37;
+        if((key+direction)!= 4)
         {
-            case 0 : direction = 0;break;
-            case 1 : direction = 1;break;
-            case 2 : direction = 2;break;
-            case 3 : direction = 3;break;
+            switch (key)
+            {
+                case 0 : direction = 2; break;
+                case 1 : direction = 1; break;
+                case 2 : direction = 4; break;
+                case 3 : direction = 3; break;
+            }
         }
+
     }
 }
